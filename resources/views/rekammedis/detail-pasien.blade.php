@@ -38,6 +38,10 @@
                         <div class="col-md-3">Alamat</div>
                         <div class="col-md-8">: {{ $pasien->alamat }}</div>
                     </div>
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-md-3">Riwayat Alergi</div>
+                        <div class="col-md-8">: {!! $pasien->riwayat_alergi !!}</div>
+                    </div>
                 </div>
             </div>
             <hr>
@@ -56,10 +60,10 @@
                         <tr>
                             <th>
                                 @if ($key->tgl_kunjungan)
-                                    {{ date('d-M-y', strtotime($key->tgl_kunjungan)) }}
+                                    {{ date('d M, Y', strtotime($key->tgl_kunjungan)) }}
                                 @endif
                             </th>
-                            <td>{{ $key->keluhan }}</td>
+                            <td>{!! $key->keluhan !!}</td>
                             <td>{{ $key->diagnosa }}</td>
                             <td>{!! $key->terapi_kie !!}</td>
                             <td>{{ $key->paraf }}</td>

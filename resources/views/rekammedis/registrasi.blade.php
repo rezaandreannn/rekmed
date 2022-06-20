@@ -2,38 +2,35 @@
     <div class="card">
         <div class="card-body bg-white shadow-sm">
             <table id="example" class="table bg-white" style="width:100%">
-                <h5>Rekam Medis Pasien</h5>
+                <h5>Registrasi Rawat Jalan</h5>
                 <hr>
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Nama Pasien</th>
                         <th>Nama KK</th>
-                        <th>Jumlah Kunjungan</th>
+                        <th>Alamat</th>
+                        <th>jenis <br>Kelamin</th>
+                        <th>Umur</th>
+                        <th>Penyakit</th>
+                        <th>tindakan</th>
                         <th>Opsi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($rekammedis as $key => $value)
+                    @foreach ($registrasis as $registrasi)
                         <tr>
-                            <td>
-                                {{ $loop->iteration }}
-                            </td>
-                            <td>
-                                {{ $value[0]->nama }}
-                            </td>
-                            <td>
-                                {!! $value[0]->nama_kk !!}
-                            </td>
-                            <td>
-                                {!! $value->count() !!}
-                            </td>
-                            <td>
-                                <a href="{{ route('rekammedis.detail', $value[0]->id) }}"
-                                    class="btn btn-info btn-sm text-white">Detail</a>
-                            </td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $registrasi->pasien->nama }}</td>
+                            <td>{{ $registrasi->pasien->nama_kk }}</td>
+                            <td>{{ $registrasi->pasien->alamat }}</td>
+                            <td>{{ $registrasi->pasien->jenis_kelamin }}</td>
+                            <td>{{ $registrasi->pasien->umur }}</td>
+                            <td>{{ $registrasi->diagnosa }}</td>
+                            <td>{!! $registrasi->terapi_kie !!}</td>
+                            <td></td>
+                        </tr>
                     @endforeach
-                    </tr>
 
                 </tbody>
             </table>

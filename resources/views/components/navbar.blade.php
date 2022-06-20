@@ -29,19 +29,40 @@
                         <a class="nav-link {{ Request::is('kunjungan/periksa/*') ? 'active' : '' }}"
                             href="{{ route('kunjungan.index') }}">Periksa</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('kunjungan/rekammedis') ? 'active' : '' }}"
+                    {{-- <li class="nav-item">
+                        <a class="nav-link {{ Request::is('kunjungan/rekammedis*') ? 'active' : '' }}"
                             href="{{ route('rekammedis.index') }}">Rekam
                             Medis</a>
-                    </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="#">Kunjungan</a>
                     </li> --}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link {{ Request::is('kunjungan/rekammedis*') ? 'active' : '' }} {{ Request::is('profile/*') ? 'active' : '' }} dropdown-toggle"
+                            href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Rekam Medis
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            <li><a class="dropdown-item" href="{{ route('rekammedis.index') }}">Kotak Rekam
+                                    Medis</a></li>
+                            <li><a class="dropdown-item" href="{{ route('rekammedis.registrasi') }}">Register Rawat
+                                    Jalan</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('rekammedis.penyakit_terbesar') }}">10
+                                    Penyakit Terbesar</a></li>
+                            <li>
+
+                                {{-- <li><a class="dropdown-item" href="{{ route('profile', auth()->user()->id) }}">Profil</a> --}}
+                            </li>
+                        </ul>
+                    </li>
                 @endif
 
                 <li class="nav-item dropdown">
                     <a class="nav-link {{ Request::is('admin/*') ? 'active' : '' }} {{ Request::is('profile/*') ? 'active' : '' }} dropdown-toggle"
-                        href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         Setting
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

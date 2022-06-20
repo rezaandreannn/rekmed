@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kunjungan;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateKunjunganRequest;
+use DateTime;
 
 class KunjunganController extends Controller
 {
@@ -39,7 +40,8 @@ class KunjunganController extends Controller
 
         $kunjungan->update($request->validated() + [
             'status_kunjungan' => 'sukses',
-            'paraf' => 'dr.test'
+            'paraf' => 'dr.test',
+            'tgl_kunjungan' => new \DateTime()
         ]);
 
         return redirect()->route('kunjungan.index')->with('message', 'Pasien telah selesai diperiksa');

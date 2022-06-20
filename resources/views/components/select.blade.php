@@ -1,5 +1,5 @@
 <div class="mb-3">
-    <label for="{{ $field }}" class="form-label text-capitalize"> {{ $field }}<span
+    <label for="{{ $field }}" class="form-label text-capitalize"> {{ $label ?? $field }}<span
             class="text-danger">{{ $required ?? '' }}</span>
     </label>
     <select class="form-select @error($field) is-invalid @enderror" name="{{ $field }}"
