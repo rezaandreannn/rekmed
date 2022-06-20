@@ -1,5 +1,7 @@
 <div class="mb-3">
-    <label for="{{ $field }}" class="form-label text-capitalize"> {{ $field }}</label>
+    <label for="{{ $field }}" class="form-label text-capitalize"> {{ $field }}<span
+            class="text-danger">{{ $required ?? '' }}</span>
+    </label>
     <select class="form-select @error($field) is-invalid @enderror" name="{{ $field }}"
         aria-label="Default select example">
         {{-- <option selected>Pilih</option> --}}

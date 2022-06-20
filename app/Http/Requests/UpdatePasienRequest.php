@@ -39,7 +39,8 @@ class UpdatePasienRequest extends FormRequest
             'tgl_lahir' => '',
             'alamat' => 'required',
             'status' => 'required',
-            'no_bpjs' => $no_bpjs
+            'no_bpjs' => $no_bpjs,
+            'riwayat_alergi' => ''
         ];
     }
 }

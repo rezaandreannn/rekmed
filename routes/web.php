@@ -44,6 +44,7 @@ Route::middleware('auth', 'role:poli,admin')->prefix('kunjungan')->group(functio
     Route::put('/periksa/{id}', [KunjunganController::class, 'update'])->name('kunjungan.update');
     Route::delete('/periksa/{id}', [KunjunganController::class, 'destroy'])->name('kunjungan.destroy');
     route::get('/rekammedis', [RekamMedisController::class, 'index'])->name('rekammedis.index');
+    route::get('/rekammedis/{id}', [RekamMedisController::class, 'rekamMedisDetail'])->name('rekammedis.detail');
     // Route::resource('/pendaftaran', PasienController::class);
     // route::get('/periksa/{id}', [PasienController::class, 'periksa'])->name('pendaftaran.periksa');
 });

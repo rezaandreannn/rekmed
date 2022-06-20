@@ -4,32 +4,6 @@
     {{-- 1. status pasien
     {{-- end optional --}}
 
-    <div class="row ">
-        <div class="col-md-3">
-            <form action="" method="get">
-                {{-- @csrf --}}
-                <div class="d-flex justify-content-between">
-                    <select name="status" class="form-select mb-1" id="status">
-
-                        @if (request('status') == 'umum')
-                            <option value="umum" selected>Umum</option>
-                            <option value="bpjs">Bpjs</option>
-                            <option value="">Semua</option>
-                        @elseif(request('status') == 'bpjs')
-                            <option value="bpjs" selected>Bpjs</option>
-                            <option value="umum">Umum</option>
-                            <option value="">Semua</option>
-                        @else
-                            <option value="" selected>Semua</option>
-                            <option value="umum">Umum</option>
-                            <option value="bpjs">Bpjs</option>
-                        @endif
-                    </select>
-                    <button type="submit" class="btn btn-primary btn-sm mb-1">Pilih</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
     <div class="card">
         <div class="card-body bg-white shadow-sm">
@@ -39,8 +13,10 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>No RM </th>
-                        <th>No RM </th>
+                        <th>Nama Pasien</th>
+                        <th>Nama KK</th>
+                        <th>Jumlah Kunjungan</th>
+                        <th>Opsi</th>
                         {{-- <th>Nama </th>
                         <th>Nama kk</th>
                        
@@ -51,25 +27,44 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {{-- @foreach ($rekammedis as $key => $value) --}}
                     @foreach ($rekammedis as $key => $value)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
                             <td>
+                                {{ $loop->iteration }}
+                            </td>
+                            <td>
+                                {{ $key }}
+                            </td>
+                            <td>
+                                {!! $value[0]->nama_kk !!}
+                            </td>
+                            <td>
+                                {!! $value->count() !!}
+                            </td>
+                            <td>
+                                <a href="{{ route('rekammedis.detail', $value[0]->id) }}"
+                                    class="btn btn-info btn-sm">Detail</a>
+                            </td>
+                    @endforeach
+                    </tr>
+                    {{-- <td>{{ $value->diagnosa }}</td> --}}
+                    {{-- <td>
                                 {!! $value->terapi_kie !!}
                             </td>
                             <td>
                                 {!! $value->paraf !!}
-                            </td>
-                            {{-- <td>{{ $pasien->nama }}</td>
+                            </td> --}}
+                    {{-- <td>{{ $pasien->nama }}</td>
                             <td>{{ $pasien->nama_kk }}</td>
                            
                             <td>{{ $pasien->umur }}</td>
                             <td>{{ $pasien->status }}</td> --}}
-                            {{-- @if (request('status') == 'bpjs')
+                    {{-- @if (request('status') == 'bpjs')
                                 <td>{{ $pasien->no_bpjs }}</td>
                             @endif --}}
-                            {{-- <td>{{ $pasien->alamat }}</td> --}}
-                            {{-- <td>
+                    {{-- <td>{{ $pasien->alamat }}</td> --}}
+                    {{-- <td>
                                 <a href="{{ route('pendaftaran.periksa', $pasien->id) }}"
                                     class="btn btn-success btn-sm text-white">Periksa</a>
                                 <a href="{{ route('pendaftaran.show', $pasien->id) }}"
@@ -79,8 +74,8 @@
                                 <a href="#" class="btn btn-danger btn-sm text-white" data-bs-toggle="modal"
                                     data-bs-target="#deletePasien{{ $pasien->id }}">Hapus</a>
                             </td> --}}
-                        </tr>
-                    @endforeach
+
+                    {{-- @endforeach --}}
                 </tbody>
             </table>
         </div>

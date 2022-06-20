@@ -38,6 +38,13 @@
                             <div class="col-md-3">Alamat</div>
                             <div class="col-md-7">: {{ $kunjungan->pasien->alamat }}</div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-3">Riwayat alergi</div>
+                            <div class="col-md-7">: </div>
+                            <div class="ml-2">
+                                {!! $kunjungan->pasien->riwayat_alergi !!}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,16 +59,21 @@
                     @method('PUT')
                     @csrf
 
-                    <label for="riwayat_alergi" class="form-label mb-2">Riwayat alergi</label>
-                    <input id="riwayat_alergi" type="hidden" name="riwayat_alergi">
-                    <trix-editor input="riwayat_alergi"></trix-editor>
+                    <label for="keluhan" class="form-label">Keluhan<span class="text-danger">*</span></label>
+                    @error('keluhan')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    <input id="keluhan" type="hidden" name="keluhan">
+                    <trix-editor input="keluhan"></trix-editor>
+
+                    <x-input field="diagnosa" label="Diagnosa" required="*" />
 
 
-                    <x-input field="keluhan" label="Keluhan" />
-                    <x-input field="diagnosa" label="Diagnosa" />
-
-
-                    <label for="terapi_kie" class="form-label mb-2">Terapi & KIE</label>
+                    <label for="terapi_kie" class="form-label mb-2">Terapi & KIE<span
+                            class="text-danger">*</span></label>
+                    @error('terapi_kie')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     <input id="terapi_kie" type="hidden" name="terapi_kie">
                     <trix-editor input="terapi_kie"></trix-editor>
 

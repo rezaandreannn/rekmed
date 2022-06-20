@@ -34,6 +34,8 @@
                                 @endif
                             @endforeach
                         </x-select>
+                        <x-input field="tgl_lahir" label="Tanggal Lahir" type="text"
+                            value="{{ $pasien->tgl_lahir }}" />
 
                     </div>
                     <div class="col-md-6">
@@ -50,11 +52,11 @@
                             @endif
                         </x-select>
                         <x-input field="no_bpjs" label="No Bpjs" type="text" value="{{ $pasien->no_bpjs }}" />
-                        <x-input field="tgl_lahir" label="Tanggal Lahir" type="text"
-                            value="{{ $pasien->tgl_lahir }}" />
+
 
                         <div class="form-floating">
-                            <textarea class="form-control  @error('alamat') is-invalid @enderror" name="alamat" id="alamat" style="height: 100px">{{ $pasien->alamat }}</textarea>
+                            <textarea class="form-control  @error('alamat') is-invalid @enderror" name="alamat" id="alamat"
+                                style="height: 100px">{{ $pasien->alamat }}</textarea>
                             <label for="alamat">Alamat</label>
                             @error('alamat')
                                 <div class="invalid-feedback">
@@ -62,9 +64,12 @@
                                 </div>
                             @enderror
                         </div>
+                        <label for="riwayat_alergi" class="form-label mb-2">Riwayat alergi</label>
+                        <input id="riwayat_alergi" type="hidden" name="riwayat_alergi">
+                        <trix-editor input="riwayat_alergi">{!! $pasien->riwayat_alergi !!}</trix-editor>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                 <a href="{{ route('pendaftaran.index') }}" class="btn btn-danger btn-sm">Kembali</a>
             </form>
         </div>

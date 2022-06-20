@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="card">
                 <div class="card-header">
                     Antrian Pasien({{ $antrians->total() }})
@@ -13,9 +13,10 @@
                                 {{ $antri->pasien->nama }}/{{ $antri->pasien->no_rm }}
                                 <div class="d-flex">
                                     <a href="{{ route('kunjungan.edit', $antri->id) }}"
-                                        class="btn btn-primary btn-sm me-2">Cek
+                                        class="badge bg-primary me-1 text-decoration-none">Cek
                                         Pasien</a>
-                                    <a href="#" class="btn btn-danger btn-sm text-white" data-bs-toggle="modal"
+                                    <a href="#" class="badge bg-danger text-white text-decoration-none"
+                                        data-bs-toggle="modal"
                                         data-bs-target="#deleteAntri{{ $antri->id }}">Hapus</a>
                                 </div>
                             </li>
@@ -31,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="card">
                 <div class="card-header">
                     Pasien Sudah berobat({{ $kunjungans->total() }})
@@ -69,22 +70,20 @@
 
     {{-- modal hapus antrian --}}
     @foreach ($antrians as $index => $antri)
-        <div class="modal fade" id="deleteAntri{{ $antri->id }}" tabindex="-1"
-            aria-labelledby="deleteAntriLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteAntri{{ $antri->id }}" tabindex="-1" aria-labelledby="deleteAntriLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="deleteAntriLabel">Hapus antrian pasien</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <h5>Yakin menghapus Pasien "{{ $antri->pasien->nama }}" ?</h5>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
-                        <form action="{{ route('kunjungan.destroy', $antri->id) }}" method="post"
-                            class="d-inline">
+                        <form action="{{ route('kunjungan.destroy', $antri->id) }}" method="post" class="d-inline">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

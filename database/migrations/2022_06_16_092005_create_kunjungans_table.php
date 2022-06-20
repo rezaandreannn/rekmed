@@ -21,7 +21,8 @@ class CreateKunjungansTable extends Migration
             $table->string('terapi_kie')->nullable();
             $table->string('paraf')->nullable();
             $table->string('status_kunjungan')->nullable();
-            $table->string('riwayat_alergi')->nullable();
+            $table->string('rujukan_dari')->nullable();
+            $table->string('rujukan_ke')->nullable();
             $table->timestamp('tgl_kunjungan')->nullable();
             $table->timestamps();
         });

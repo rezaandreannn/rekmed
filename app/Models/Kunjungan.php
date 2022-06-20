@@ -11,6 +11,9 @@ class Kunjungan extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'tgl_kunjungan' => 'datetime',
+    ];
 
     public function pasien()
     {

@@ -25,6 +25,7 @@ class CreatePasiensTable extends Migration
             $table->string('alamat');
             $table->enum('status', ['umum', 'bpjs']);
             $table->string('no_bpjs')->nullable();
+            $table->string('riwayat_alergi')->nullable();
             $table->timestamps();
         });
     }
