@@ -38,7 +38,45 @@
                 <p class="text-center text-muted">{{ request('bulan') ?? date('M') }},
                     {{ request('tahun') ?? date('Y') }}</p>
                 <div class="card-body bg-white shadow-sm">
-                    <ol class="list-group list-group-numbered">
+                    <table class="table table-bordered">
+                        <thead class="fw-bold">
+                            <tr class="text-center">
+                                <th scope="col" rowspan="2" class="">No</th>
+                                <th scope="col" rowspan="2">Jenis Penyakit</th>
+                                {{-- <th scope="col" colspan="2">Kasus Lama</th>
+                                <th scope="col" colspan="2">Kasus Baru</th> --}}
+                                <th scope="col" colspan="3">Total</th>
+                                {{-- <th scope="col" colspan="2">jumlah</th> --}}
+                            </tr>
+                            <tr class="text-center">
+                                <th scope="row">L</th>
+                                {{-- <td>P</td>
+                                <td>L</td>
+                                <td>P</td>
+                                <td>L</td> --}}
+                                <td>P</td>
+                                <td>jumlah</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($diagnosa as $key => $item)
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                    <td>{{ $item->nama_diagnosa }}</td>
+                                    {{-- <td></td>
+                                    <td></td>
+                                    <td>1</td>
+                                    <td></td> --}}
+
+                                    <td class="text-center">{{ $item->l_count }}</td>
+                                    <td class="text-center">{{ $item->p_count }}</td>
+                                    <td class="text-center">{{ $item->jumlah }}</td>
+
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{-- <ol class="list-group list-group-numbered">
                         @forelse ($diagnosa as $item)
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
@@ -60,7 +98,7 @@
                                 </div>
                             </div>
                         @endforelse
-                    </ol>
+                    </ol> --}}
                 </div>
             </div>
         </div>

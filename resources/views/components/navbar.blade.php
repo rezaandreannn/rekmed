@@ -26,7 +26,7 @@
                 @endif
                 @if (auth()->user()->role->name == 'admin' || auth()->user()->role->name == 'poli')
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('kunjungan/periksa/*') ? 'active' : '' }}"
+                        <a class="nav-link {{ Request::is('kunjungan/periksa*') ? 'active' : '' }}"
                             href="{{ route('kunjungan.index') }}">Periksa</a>
                     </li>
                     {{-- <li class="nav-item">
@@ -51,6 +51,9 @@
                             </li>
                             <li><a class="dropdown-item" href="{{ route('rekammedis.penyakit_terbesar') }}">10
                                     Penyakit Terbesar</a></li>
+                            <li>
+                            <li><a class="dropdown-item" href="{{ route('rekammedis.lb_1') }}">LB 1</a>
+                            </li>
                             <li>
 
                                 {{-- <li><a class="dropdown-item" href="{{ route('profile', auth()->user()->id) }}">Profil</a> --}}
