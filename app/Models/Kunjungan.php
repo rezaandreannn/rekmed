@@ -16,7 +16,7 @@ class Kunjungan extends Model
     ];
 
     const BULAN = [
-        '01' => 'januari',
+        '01' => 'Januari',
         '02' => 'Februari',
         '03' => 'Maret',
         '04' => 'April',
@@ -27,7 +27,7 @@ class Kunjungan extends Model
         '09' => 'September',
         '10' => 'Oktober',
         '11' => 'November',
-        '012' => 'Desember'
+        '12' => 'Desember'
     ];
     const TAHUN = [
         '2022' => '2022',

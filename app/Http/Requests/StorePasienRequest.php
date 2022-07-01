@@ -26,19 +26,19 @@ class StorePasienRequest extends FormRequest
 
         // cek apakah status bpjs 
         if ($this->status == 'bpjs') {
-            $no_bpjs = 'required';
+            $no_bpjs = 'required|numeric|unique:pasiens|min:12|max:20';
         } else {
             $no_bpjs = '';
         }
 
         return [
-            'no_rm' => 'required',
-            'nama' => 'required',
-            'nama_kk' => 'required',
+            'no_rm' => 'required|numeric',
+            'nama' => 'required|:min:2',
+            'nama_kk' => 'required|min:2',
             'jenis_kelamin' => 'required',
             'hubungan' => 'required',
             'tgl_lahir' => 'required',
-            'alamat' => 'required',
+            'alamat' => 'required|min:5',
             'status' => 'required',
             'no_bpjs' => $no_bpjs,
             'riwayat_alergi' => ''

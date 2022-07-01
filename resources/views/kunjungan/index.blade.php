@@ -1,4 +1,14 @@
 <x-app-layout>
+    <div class="row d-flex justify-content-end">
+        <div class="col-md-2">
+            <div class="card">
+                <span class="text-center">
+                    {{ date('d M, Y') }}
+
+                </span>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-5">
             <div class="card">

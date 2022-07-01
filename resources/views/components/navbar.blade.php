@@ -12,7 +12,8 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Home</a>
+                    <a class="nav-link {{ Request::is('home') ? 'active' : '' }}"
+                        href="{{ route('home') }}">Home</a>
                 </li>
                 @if (auth()->user()->role->name == 'admin' || auth()->user()->role->name == 'pendaftaran')
                     <li class="nav-item">

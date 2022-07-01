@@ -66,13 +66,9 @@
                                             {{ $reports[$diagnosa][$job_comp_code]['l'] ?? '0' }}
                                         </td>
                                         <td>{{ $reports[$diagnosa][$job_comp_code]['p'] ?? '0' }}</td>
-                                        {{-- <td>{{ $reports[$diagnosa][$job_comp_code]['jumlah'] ?? '0' }}</td> --}}
-                                        {{-- <td>{{ count([$reports[$diagnosa]]) ?? '0' }}</td> --}}
                                     @endforeach
 
-                                    {{-- @foreach ($values as $item)
-                                        <td class="fw-bold">{{ count([$item['jumlah']]) ?? '0' }}</td>
-                                    @endforeach --}}
+
 
                                 </tr>
                             @endforeach

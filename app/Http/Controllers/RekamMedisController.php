@@ -155,8 +155,36 @@ class RekamMedisController extends Controller
         // dd($reports);
 
         // dd($diagnosas);
+
+        // testing range umur
+        // $ranges = [ // the start of each age-range.
+        //     '18-24' => 18,
+        //     '25-35' => 25,
+        //     '36-45' => 36,
+        //     '46+' => 46
+        // ];
+
+        // $range = $diagnosa->map(function ($user) use ($ranges) {
+        //     $age = $user->umur;
+        //     foreach ($ranges as $key => $breakpoint) {
+        //         if ($breakpoint >= $age) {
+        //             $user->range = $key;
+        //             break;
+        //         }
+        //     }
+
+        //     return $user;
+        // })
+        //     ->mapToGroups(function ($user, $key) {
+        //         return [$user->range => $user];
+        //     })
+        //     ->map(function ($group) {
+        //         return count($group);
+        //     })
+        //     ->sortKeys();
+
         $diagnosas = $diagnosa->pluck('umur')->sortBy('umur')->unique();
-        // $jumlah = $diagnosa->pluck('jumlah')->groupBy('umur');
+        // dd($range);
 
         // dd($diagnosas);
 
