@@ -11,10 +11,10 @@
                         <th>Nama KK</th>
                         <th>Alamat</th>
                         <th>jenis <br>Kelamin</th>
-                        <th>Umur</th>
-                        <th>Penyakit</th>
-                        <th>tindakan</th>
-                        <th>Opsi</th>
+                        <th>Keluhan</th>
+                        <th>Diagnosa</th>
+                        <th>Terapi & kie</th>
+                        {{-- <th>Opsi</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -25,10 +25,10 @@
                             <td>{{ $registrasi->pasien->nama_kk }}</td>
                             <td>{{ $registrasi->pasien->alamat }}</td>
                             <td>{{ $registrasi->pasien->jenis_kelamin }}</td>
-                            <td>{{ $registrasi->pasien->umur }}</td>
+                            <td>{!! $registrasi->keluhan !!}</td>
                             <td>{{ $registrasi->diagnosa }}</td>
                             <td>{!! $registrasi->terapi_kie !!}</td>
-                            <td></td>
+                            {{-- <td></td> --}}
                         </tr>
                     @endforeach
 

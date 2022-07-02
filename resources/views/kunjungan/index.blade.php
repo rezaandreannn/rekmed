@@ -3,7 +3,7 @@
         <div class="col-md-2">
             <div class="card">
                 <span class="text-center">
-                    {{ date('d M, Y') }}
+                    Tgl. {{ date('d M, Y') }}
 
                 </span>
             </div>
@@ -54,14 +54,8 @@
                                 {{ $kunjungans->firstItem() + $index }}.
                                 {{ $kunjungan->pasien->nama }}/{{ $kunjungan->pasien->no_rm }}
                                 <div class="d-flex">
-                                    <a href="{{ route('kunjungan.edit', $kunjungan->id) }}"
-                                        class="btn btn-primary btn-sm me-2">Cek
-                                        Pasien</a>
-                                    <form action="{{ route('kunjungan.destroy', $kunjungan->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                    </form>
+                                    <a href="#" class="btn btn-primary btn-sm me-2" data-bs-toggle="modal"
+                                        data-bs-target="#kunjunganDetail{{ $kunjungan->id }}">Detail</a>
                                 </div>
                             </li>
                         @empty
@@ -103,6 +97,87 @@
             </div>
         </div>
     @endforeach
+
+    {{-- detail pasien sudah berobat today() --}}
+    @foreach ($kunjungans as $index => $kunjungan)
+        <div class="modal fade" id="kunjunganDetail{{ $kunjungan->id }}" tabindex="-1"
+            aria-labelledby="kunjunganDetailLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="kunjunganDetailLabel">Detail pasien sudah berobat</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                Nama
+                            </div>
+                            <div class="col-md-1">
+                                :
+                            </div>
+                            <div class="col-md-8">
+                                {{ $kunjungan->pasien->nama }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3">
+                                No RM
+                            </div>
+                            <div class="col-md-1">
+                                :
+                            </div>
+                            <div class="col-md-8">
+                                {{ $kunjungan->pasien->no_rm }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3">
+                                Keluhan
+                            </div>
+                            <div class="col-md-1">
+                                :
+                            </div>
+                            <div class="col-md-8">
+                                {!! $kunjungan->keluhan !!}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3">
+                                Diagnosa
+                            </div>
+                            <div class="col-md-1">
+                                :
+                            </div>
+                            <div class="col-md-8">
+                                {!! $kunjungan->diagnosa !!}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3">
+                                Terapi & KIE
+                            </div>
+                            <div class="col-md-1">
+                                :
+                            </div>
+                            <div class="col-md-8">
+                                {!! $kunjungan->terapi_kie !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
 
     @push('scripts')
 

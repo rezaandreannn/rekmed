@@ -2,7 +2,7 @@
     <label for="{{ $field }}" class="form-label text-capitalize"> {{ $label ?? $field }}<span
             class="text-danger">{{ $required ?? '' }}</span>
     </label>
-    <select class="form-select @error($field) is-invalid @enderror" name="{{ $field }}"
+    <select class="form-select @error($field) is-invalid @enderror" name="{{ $field }}" id={{ $field }}
         aria-label="Default select example">
         {{-- <option selected>Pilih</option> --}}
         {{ $slot }}

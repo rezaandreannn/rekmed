@@ -64,6 +64,10 @@
                         Note: <span class="fw-bold">Antrian</span> dan <span class="fw-bold">pasien selesai
                             berobat</span> menampilkan pada
                         hari ini. Tgl <span class="fw-bold">{{ date('d-m-Y') }}</span>
+                        <br>
+                        Note: <span class="fw-bold">10 Penyakit Terbesar</span> menampilkan data pada
+                        <span class="fw-bold">bulan {{ date('F') }}.</span>
+
 
                     </div>
                 </div>
@@ -74,8 +78,10 @@
                         <div class="card-block">
                             <h6 class="m-b-20">Antrian </h6>
                             <h2 class="text-right"><span>{{ $antrians->count() }}</span></h2>
-                            <a href="{{ route('kunjungan.index') }}" class="m-b-0 text-decoration-none"><span
-                                    class="f-right fw-bold text-capitalize text-white">Lihat</span></a>
+                            @if ($antrians->count() != 0)
+                                <a href="{{ route('kunjungan.index') }}" class="m-b-0 text-decoration-none"><span
+                                        class="f-right fw-bold text-capitalize text-white">Lihat</span></a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -84,8 +90,10 @@
                         <div class="card-block">
                             <h6 class="m-b-20">Selesai berobat</h6>
                             <h2 class="text-right"><span>{{ $kunjungans->count() }}</span></h2>
-                            <a href="{{ route('kunjungan.index') }}" class="m-b-0 text-decoration-none"><span
-                                    class="f-right fw-bold text-capitalize text-white">Lihat</span></a>
+                            @if ($kunjungans->count() != 0)
+                                <a href="{{ route('kunjungan.index') }}" class="m-b-0 text-decoration-none"><span
+                                        class="f-right fw-bold text-capitalize text-white">Lihat</span></a>
+                            @endif
                         </div>
                     </div>
                 </div>

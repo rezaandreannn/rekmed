@@ -34,8 +34,14 @@ class Kunjungan extends Model
         '2023' => '2023',
         '2024' => '2024',
         '2025' => '2025'
-
     ];
+
+    const DIAGNOSA = [
+        '1' => 'mag',
+        '2' => 'asam lambung',
+    ];
+
+
 
     public function pasien()
     {

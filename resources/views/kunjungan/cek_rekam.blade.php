@@ -66,7 +66,17 @@
                     <input id="keluhan" type="hidden" name="keluhan">
                     <trix-editor input="keluhan"></trix-editor>
 
-                    <x-input field="diagnosa" label="Diagnosa" required="*" />
+                    {{-- <x-input field="diagnosa" label="Diagnosa" required="*" /> --}}
+                    <x-select field="diagnosa" label="Pilih diagnosa">
+                        <option value="">Pilih</option>
+                        @foreach (App\Models\Kunjungan::DIAGNOSA as $key => $value)
+                            {{-- @if ($value == request('diagnosa')) --}}
+                            {{-- <option value="{{ $value }}" selected>{{ $value }}</option> --}}
+                            {{-- @else --}}
+                            <option value="{{ $value }}">{{ $value }}</option>
+                            {{-- @endif --}}
+                        @endforeach
+                    </x-select>
 
 
                     <label for="terapi_kie" class="form-label mb-2">Terapi & KIE<span
@@ -89,5 +99,7 @@
             <a href="{{ route('kunjungan.index') }}">Silahkan pilih pasien Terlebih dahulu</a>
         </div>
     @endif
+
+
 
 </x-app-layout>

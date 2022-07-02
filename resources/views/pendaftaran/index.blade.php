@@ -87,14 +87,13 @@
 
 
     @foreach ($pasiens as $pasien)
-        <div class="modal fade" id="deletePasien{{ $pasien->id }}" tabindex="-1"
-            aria-labelledby="deletePasienLabel" aria-hidden="true">
+        <div class="modal fade" id="deletePasien{{ $pasien->id }}" tabindex="-1" aria-labelledby="deletePasienLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="deletePasienLabel">Hapus pasien</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <h5>Yakin menghapus Pasien "{{ $pasien->nama }}" ?</h5>
@@ -128,7 +127,7 @@
         <script>
             $(document).ready(function() {
                 var table = $('#example').DataTable({
-                    buttons: ['excel', 'pdf', 'colvis'],
+                    buttons: ['colvis'],
                     dom: "<'row'<' col-md-3'l><' col-md-5'B><' col-md-4'f>>" +
                         "<'row'<'col-sm-12'tr>>" +
                         "<'row'<'col-md-5'i><'col-md-7'p>>"
