@@ -258,6 +258,8 @@ class RekamMedisController extends Controller
             ];
         });
 
-        return Excel::download(new LbExport($diagnosa, $reports), 'lb_1.xlsx');
+        $diagnosas = $diagnosa->pluck('umur')->sortBy('umur')->unique();
+
+        return Excel::download(new LbExport($diagnosas, $reports), 'lb_1.xlsx');
     }
 }

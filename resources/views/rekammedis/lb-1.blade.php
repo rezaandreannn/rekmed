@@ -47,10 +47,9 @@
                     <table class="table table-bordered">
                         <thead class="fw-bold">
                             <tr class="text-center">
-
                                 <th scope="col" rowspan="2">Jenis Penyakit</th>
                                 @foreach ($diagnosas as $key => $umur)
-                                    <th scope="col" colspan="2">{{ $umur }}</th>
+                                    <th scope="col" colspan="2">{{ $umur }} Thn</th>
                                 @endforeach
                                 {{-- <th scope="col" rowspan="2">Total</th> --}}
                             </tr>
@@ -73,9 +72,6 @@
                                         </td>
                                         <td>{{ $reports[$diagnosa][$job_comp_code]['p'] ?? '0' }}</td>
                                     @endforeach
-
-
-
                                 </tr>
                             @endforeach
                         </tbody>
