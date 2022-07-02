@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="10 Penyakit terbesar">
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
             <div class="row">

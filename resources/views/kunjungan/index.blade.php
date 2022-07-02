@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Periksa">
     <div class="row d-flex justify-content-end">
         <div class="col-md-2">
             <div class="card">

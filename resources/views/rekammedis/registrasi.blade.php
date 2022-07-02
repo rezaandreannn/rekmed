@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Registrasi rawat jalan">
     <div class="card">
         <div class="card-body bg-white shadow-sm">
             <table id="example" class="table bg-white" style="width:100%">

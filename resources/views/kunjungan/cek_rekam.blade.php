@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Cek Rekam">
     <div class="d-flex justify-content-center">
         <h5>Rekam Medis Pasien</h5>
     </div>

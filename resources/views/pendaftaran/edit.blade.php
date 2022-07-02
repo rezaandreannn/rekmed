@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Edit Data Pasien">
     <div class="card">
         <div class="card-header">
             edit pasien

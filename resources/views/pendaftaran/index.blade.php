@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Kunjungan">
     {{-- optional --}}
     {{-- 2. selecteddeleted all --}}
     {{-- 1. status pasien

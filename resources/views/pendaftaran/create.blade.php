@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Pendaftaran Pasien">
     <div class="card">
         <div class="card-header">
             Daftar pasien

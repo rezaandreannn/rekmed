@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Detail Rekam Medis">
     <div class="card">
         <div class="card-body">
             <div class="text-uppercase text-center">
