@@ -33,6 +33,14 @@
                 </form>
             </div>
 
+            <form action="{{ route('penyakit_terbesar_report') }}" method="get">
+                <input type="hidden" name="bulan" value="{{ request('bulan') ?? date('m') }}">
+                <input type="hidden" name="tahun" value="{{ request('tahun') ?? date('Y') }}">
+                <button class="btn btn-success my-3" type="submit">EXPORT EXCEL</button>
+            </form>
+
+
+
             <div class="card">
                 <h5 class="text-center mt-2">10 Data Penyakit Terbesar</h5>
                 <p class="text-center text-muted">{{ request('bulan') ?? date('M') }},

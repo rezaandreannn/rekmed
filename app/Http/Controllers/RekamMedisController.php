@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\LbExport;
 use Carbon\Carbon;
-use App\Models\Kunjungan;
 use App\Models\Pasien;
+use App\Models\Kunjungan;
 use Illuminate\Http\Request;
+use App\Exports\PenyakitExport;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RekamMedisController extends Controller
 {
@@ -95,6 +98,37 @@ class RekamMedisController extends Controller
 
         return view('rekammedis.penyakit-terbesar', compact('diagnosa'));
     }
+
+    public function export_excel(Request $request)
+    {
+
+        $bulan = $request->input('bulan');
+        $tahun = $request->input('tahun');
+
+        // dd($bulan);
+
+        $diagnosa = DB::table('kunjungans')
+            ->leftJoin('pasiens', 'pasiens.id', '=', 'kunjungans.pasien_id')
+            ->select([
+                DB::raw('diagnosa as nama_diagnosa'),
+                // DB::raw('GROUP_CONCAT(pasiens.nama) as nama'),
+                DB::raw('sum(jenis_kelamin = "laki-laki") l_count'),
+                DB::raw('sum(jenis_kelamin = "perempuan") p_count'),
+                DB::raw('count(diagnosa) as jumlah')
+            ])
+            ->groupBy('nama_diagnosa')
+            ->whereMonth('tgl_kunjungan', $bulan)
+            ->whereYear('tgl_kunjungan', $tahun)
+            ->orderBy('jumlah', 'desc')
+            ->where('status_kunjungan', '=', 'sukses')
+            ->limit(10)
+            ->get();
+
+        return Excel::download(new PenyakitExport($diagnosa), '10_penyakit_terbesar.xlsx');
+        // return (new PenyakitExport($diagnosa))->download('penyakit.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
+    }
+
+
 
     public function lb_1(Request $request)
     {
@@ -189,5 +223,41 @@ class RekamMedisController extends Controller
         // dd($diagnosas);
 
         return view('rekammedis.lb-1', compact('reports', 'diagnosas'));
+    }
+
+    public function lb_export(Request $request)
+    {
+
+        $bulan = $request->input('bulan');
+        $tahun = $request->input('tahun');
+
+        $diagnosa = DB::table('kunjungans')
+            ->join('pasiens', 'pasiens.id', '=', 'kunjungans.pasien_id')
+            ->select([
+                'diagnosa', 'umur',
+                DB::raw('sum(jenis_kelamin = "laki-laki") l_count'),
+                DB::raw('sum(jenis_kelamin = "perempuan") p_count'),
+                DB::raw('count(diagnosa) as jumlah')
+            ])
+
+            ->groupBy(['diagnosa', 'umur'])
+            ->whereMonth('tgl_kunjungan', $bulan)
+            ->whereYear('tgl_kunjungan', $tahun)
+            ->orderBy('umur', 'asc')
+            ->where('status_kunjungan', '=', 'sukses')
+            ->get();
+
+        // dd($diagnosa);
+
+        $reports = [];
+        $diagnosa->each(function ($item) use (&$reports) {
+            $reports[$item->diagnosa][$item->umur] = [
+                'l' => $item->l_count,
+                'p' => $item->p_count,
+                'jumlah' => $item->jumlah
+            ];
+        });
+
+        return Excel::download(new LbExport($diagnosa, $reports), 'lb_1.xlsx');
     }
 }
