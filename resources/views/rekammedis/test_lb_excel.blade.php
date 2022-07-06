@@ -23,6 +23,7 @@
             </tr>
         </thead>
         <tbody>
+            <?php $total = 0; ?>
             @foreach ($diagnosa as $diagnosas => $values)
                 <tr>
                     <td colspan="2">{{ $values->diagnosa }}</td>
@@ -43,7 +44,16 @@
                     </td>
                     <td>{{ $values->jumlah }}</td>
                 </tr>
+                <?php
+                $total += $values->jumlah;
+                ?>
             @endforeach
+            @if (request('diagnosa'))
+                <tr>
+                    <th colspan="5" style="text-align: right">Total</th>
+                    <th><?php echo $total; ?></th>
+                </tr>
+            @endif
         </tbody>
     </table>
 </body>

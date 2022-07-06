@@ -53,9 +53,9 @@
                             <li><a class="dropdown-item" href="{{ route('rekammedis.penyakit_terbesar') }}">10
                                     Penyakit Terbesar</a></li>
                             <li>
-                            <li><a class="dropdown-item" href="{{ route('rekammedis.lb_1') }}">LB 1</a>
+                                {{-- <li><a class="dropdown-item" href="{{ route('rekammedis.lb_1') }}">LB 1</a> --}}
                             </li>
-                            <li><a class="dropdown-item" href="{{ route('rekammedis.test_lb_1') }}"> test LB 1</a>
+                            <li><a class="dropdown-item" href="{{ route('rekammedis.test_lb_1') }}">LB 1</a>
                             </li>
                             <li>
 

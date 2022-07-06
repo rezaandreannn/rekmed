@@ -81,6 +81,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $total = 0; ?>
                             @foreach ($diagnosa as $diagnosas => $values)
                                 <tr>
                                     <td>{{ $values->diagnosa }}</td>
@@ -89,7 +90,16 @@
                                     <td>{{ $values->p_count }}</td>
                                     <td>{{ $values->jumlah }}</td>
                                 </tr>
+                                <?php
+                                $total += $values->jumlah;
+                                ?>
                             @endforeach
+                            @if (request('diagnosa'))
+                                <tr>
+                                    <th colspan="4" style="text-align: right">Total</th>
+                                    <th><?php echo $total; ?></th>
+                                </tr>
+                            @endif
                         </tbody>
                     </table>
                     <div class="mt-2 d-flex justify-content-end">
