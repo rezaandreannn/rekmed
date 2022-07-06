@@ -144,7 +144,6 @@ class PasienController extends Controller
         // ambil data kunjungan yg id pasien nya sama dengn pasien id
         $kunjungans = Kunjungan::with('pasien')
             ->where('pasien_id', $id)
-            // ->where('status_kunjungan', 'antri')
             ->whereDate('created_at', '=', today())
             ->get();
 

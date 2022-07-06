@@ -8,24 +8,24 @@ use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\Exportable;
 
 
-class LbExport implements FromView
+class LbExportTest implements FromView
 {
 
     use Exportable;
 
-    public function __construct($diagnosas, $reports)
+    public function __construct($diagnosa)
     {
-        $this->diagnosas = $diagnosas;
-        $this->reports = $reports;
+        $this->data = $diagnosa;
+        // $this->reports = $reports;
     }
     /**
      * @return \Illuminate\Support\Collection
      */
     public function view(): View
     {
-        return view('rekammedis.lb-export-excel', [
-            'diagnosas' => $this->diagnosas,
-            'reports' => $this->reports
+        return view('rekammedis.test_lb_excel', [
+            'diagnosa' => $this->data
+            // 'reports' => $this->reports
         ]);
     }
     public function registerEvents(): array
@@ -38,8 +38,6 @@ class LbExport implements FromView
                         'alignment' => [
                             'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
                         ],
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['argb' => '000000'],
                     ]
                 );
             },

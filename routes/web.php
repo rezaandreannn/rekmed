@@ -48,8 +48,8 @@ Route::middleware('auth', 'role:poli,admin')->prefix('kunjungan')->group(functio
     route::get('/rekammedis/penyakit_terbesar', [RekamMedisController::class, 'diagnosa'])->name('rekammedis.penyakit_terbesar');
     Route::get('/rekammedis/export_excel', [RekamMedisController::class, 'export_excel'])->name('penyakit_terbesar_report');
     route::get('/rekammedis/lb-1', [RekamMedisController::class, 'lb_1'])->name('rekammedis.lb_1');
+    route::get('/rekammedis/test_lb-1', [RekamMedisController::class, 'test_lb_1'])->name('rekammedis.test_lb_1');
     Route::get('/rekammedis/lb_1/export_excel', [RekamMedisController::class, 'lb_export'])->name('lb_report');
+    Route::get('/rekammedis/test_lb_1/export_excel', [RekamMedisController::class, 'report_lb_test'])->name('test_lb_report');
     route::get('/rekammedis/{id}', [RekamMedisController::class, 'rekamMedisDetail'])->name('rekammedis.detail');
-    // Route::resource('/pendaftaran', PasienController::class);
-    // route::get('/periksa/{id}', [PasienController::class, 'periksa'])->name('pendaftaran.periksa');
 });

@@ -51,27 +51,64 @@
                                 @foreach ($diagnosas as $key => $umur)
                                     <th scope="col" colspan="2">{{ $umur }} Thn</th>
                                 @endforeach
-                                {{-- <th scope="col" rowspan="2">Total</th> --}}
+                                <th scope="col" rowspan="2">Total</th>
                             </tr>
                             <tr class="text-center">
                                 @foreach ($diagnosas as $key => $item)
                                     <th scope="row">L</th>
                                     <th scope="row">P</th>
                                 @endforeach
-                                {{-- <th scope="row"></th> --}}
                             </tr>
+
                         </thead>
                         <tbody>
+                            <?php $total = 0; ?>
                             @foreach ($reports as $diagnosa => $values)
                                 <tr>
                                     <td>{{ $diagnosa }}</td>
-                                    {{-- @foreach ($values as $item => $a) --}}
-                                    @foreach ($diagnosas as $job_comp_code)
+                                    @foreach ($diagnosas as $umur)
                                         <td>
-                                            {{ $reports[$diagnosa][$job_comp_code]['l'] ?? '0' }}
+                                            {{ $reports[$diagnosa][$umur]['l'] ?? '0' }}
                                         </td>
-                                        <td>{{ $reports[$diagnosa][$job_comp_code]['p'] ?? '0' }}</td>
+                                        <td>{{ $reports[$diagnosa][$umur]['p'] ?? '0' }}
+                                            {{-- <td>{{ $reports[$diagnosa][$umur]['jumlah'] ?? '0' }} --}}
+                                            <?php
+                                            
+                                            // $total += $reports[$diagnosa][$umur]['jumlah'] ?? 0;
+                                            // var_dump($total);
+                                            // ambil data
+                                            // $laki = $reports[$diagnosa][$umur]['l'] ?? 0;
+                                            // $perempuan = $reports[$diagnosa][$umur]['l'] ?? 0;
+                                            // // ubah menjadi int
+                                            // $l = (int) $laki;
+                                            // $p = (int) $perempuan;
+                                            // $total = $l + $p;
+                                            ?>
                                     @endforeach
+                                    {{-- @foreach ($values as $item) --}}
+                                    {{-- data jumlah dapet, namun implementasi blm run --}}
+                                    <?php
+                                    // $total = $item['jumlah'];
+                                    // var_dump($total);
+                                    // $l = (int) $item['l'];
+                                    // $p = (int) $item['p'];
+                                    // $total = $l + $p;
+                                    // var_dump($total);
+                                    // $total += $item['jumlah'];
+                                    ?>
+                                    {{-- data jumlah dapet, namun implementasi blm run --}}
+                                    {{-- @endforeach --}}
+                                    {{-- test --}}
+                                    <?php
+                                    ?>
+                                    {{-- test --}}
+                                    {{-- hitung berdasarkan jumlah belum array multidimensi --}}
+                                    {{-- <td>{{ count($values) }}</td> --}}
+                                    {{-- hitung berdasarkan jumlah belum array multidimensi --}}
+                                    <td>
+                                        {{ $total }}
+
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
